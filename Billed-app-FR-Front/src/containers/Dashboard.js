@@ -146,9 +146,13 @@ export default class {
       this.counter ++
     }
 
-    bills.forEach(bill => {
-      $(`#status-bills-container${this.index} #open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills)); // [Bug Hunt] - Dashboard
-    })
+    // [Bug Hunt] - Dashboard
+    bills.forEach((bill) => { 
+      const billElement = document.querySelector(`#status-bills-container${this.index} #open-bill${bill.id}`);
+      if (billElement) {
+        billElement.addEventListener('click', (e) => this.handleEditTicket(e, bill, bills));
+      }
+    });
 
     return bills
 
