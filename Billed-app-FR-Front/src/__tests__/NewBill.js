@@ -26,7 +26,7 @@ import NewBillUI from "../views/NewBillUI.js";
 import NewBill from "../containers/NewBill.js";
 import { ROUTES, ROUTES_PATH } from "../constants/routes.js";
 import { localStorageMock } from "../__mocks__/localStorage.js";
-import mockStore from "../__mocks__/store";
+import mockStore, {newBillData} from "../__mocks__/store";
 import router from "../app/Router.js";
 
 jest.mock("../app/Store", () => mockStore);
@@ -48,26 +48,13 @@ describe("Given I am connected as an employee", () => {
       
       expect(mailIcon).not.toBeFalsy(); // [Ajout de tests unitaires et d'intégration]
     });
-
-
   // Integration Test "POST new bill"
 
     test("Then the bill is added to API POST", async () => {
       const html = NewBillUI();
       document.body.innerHTML = html;
     //   //to-do write assertion
-    const bill = {
-      type: "Transports",
-      name: "Location Voiture",
-      amount: 250,
-      date: "2024-10-22",
-      vat: "33",
-      pct: 33,
-      commentary: "Location de voiture pour deplacemnet",
-      fileUrl: "BillTest.jpeg",
-      fileName: "Bill",
-      status: "pending",
-    };
+    const bill = newBillData
 
     const expenseType = screen.getByTestId("expense-type");
     fireEvent.change(expenseType, { target: { value: bill.type } });

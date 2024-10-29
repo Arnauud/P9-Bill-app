@@ -83,6 +83,20 @@ const mockedBills = {
     })
   },
 }
+const newBillData = {
+  type: "Transports",
+  name: "Location Voiture",
+  amount: 250,
+  date: "2024-10-22",
+  vat: "33",
+  pct: 33,
+  commentary: "Location de voiture pour deplacemnet",
+  fileUrl: "BillTest.jpeg",
+  fileName: "Bill",
+  status: "pending",
+};
+
+export { mockedBills, newBillData };
 
 export default {
   bills() {
